@@ -4,7 +4,7 @@
   "main": "javascripts.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": " node javascripts.js "
+    "start": " node iterate.js "
   },
   "author": "",
   "license": "ISC",

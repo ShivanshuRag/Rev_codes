@@ -123,3 +123,7 @@ val1 = undefined ?? 20 ?? 10/ // 20
 
 
 console.log(val1);
+
+// ternary Operator
+const iceTeaPrice = 70
+iceTeaPrice <= 80 ? console.log("less than 80") : console.log("more than 80")
