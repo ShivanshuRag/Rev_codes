@@ -93,4 +93,33 @@ const user = {
 const addTwo = (num1, num2) => ( {username: "hitesh"} )
    
 
-console.log(addTwo(3, 4))
+// console.log(addTwo(3, 4))
+
+
+// const score = 200
+
+// if (score > 100) {
+//     let power = "fly"
+//     console.log(`User power: ${power}`);
+// }
+
+
+//
+//  const emptyObj = {}
+
+// if (Object.keys(emptyObj).length === 0) {
+//     console.log("Object is empty");
+// }
+
+// Nullish Coalescing Operator (??): null and undefined liye hai 
+
+let val1;
+val1 = 5 ?? 10  // 5
+val1 = null ?? 10  // 10
+val1 = undefined ?? 15 // 15
+val1 = undefined ?? null ?? 10 // 10
+
+val1 = undefined ?? 20 ?? 10/ // 20
+
+
+console.log(val1);
