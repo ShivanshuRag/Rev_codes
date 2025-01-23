@@ -7,7 +7,7 @@ class Stack{
  }
 
   push(data){
-   this.Stack.push(data)
+   this.Stack.push(data) // push method , LIFO principal
   }
 
   pop(){

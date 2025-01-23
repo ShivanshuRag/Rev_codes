@@ -7,7 +7,7 @@ class Queue{
     }
 
     enqueue(value){ // add value
-      this.Queue.unshift()
+      this.Queue.unshift(value) // unshift method ek line me rakhta hai , FIFO principal
     }
 
     dequeue(){ // remove value 
@@ -32,7 +32,7 @@ class Queue{
     printQ(){
         let val = ""
         for (let index = 0; index < this.Queue.length; index++) {
-          val += this.Queue[index]
+          val += this.Queue[index] + "\n"
             
         }
         return val
@@ -43,3 +43,14 @@ class Queue{
     }
 
 }
+
+ let myQueue = new Queue()
+
+ myQueue.enqueue(10)
+ myQueue.enqueue(30)
+ myQueue.enqueue(40)
+ myQueue.enqueue(80)
+//  myQueue.dequeue()
+ console.log(myQueue.printQ());
+ console.log(myQueue.peek());
+ 
