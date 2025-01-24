@@ -61,3 +61,24 @@ Linkedlist.prototype.inserAtBegning = function(data){
      last.next = newNode
      
  }
+
+
+//  addAtGivenPosition 
+
+/*
+  -> user se prevnode lenge 
+  -> create new node 
+  -> new node ke next me prevnode.next set kar denge
+  -> prevnode.next = new node 
+
+*/
+
+Linkedlist.prototype.insert_At_Given_Node = function ( prevNode , data){
+    if(!prevNode){
+        console.log(' prevNode is not exit');
+        return;
+    }
+
+    const newNode = new Node(data , prevNode.next);
+    prevNode.next = newNode
+}
