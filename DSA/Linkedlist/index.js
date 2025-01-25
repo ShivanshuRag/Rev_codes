@@ -57,19 +57,20 @@ Linkedlist.prototype.inserAtBegning = function(data){
  Linkedlist.prototype.insertAtEnd = function(data){
      let newNode = new Node(data)
 
-     if(!(this.head == null) ){  // agar head null h 
+     if( !this.head ){  // agar khali node hai to 
         this.head = newNode
         return;
      }
-
+     
      let last = this.head 
 
      while( last.next  ){
          last = last.next
      }
-      
+    
      last.next = newNode
      
+    
  }
 
 
@@ -105,9 +106,11 @@ Linkedlist.prototype.insert_At_Given_Node = function ( prevNode , data){
 
   // Example usage
 let linkedList = new Linkedlist();
-linkedList.inserAtBegning(10);
-linkedList.inserAtBegning(20);
-linkedList.inserAtBegning(30);
+linkedList.inserAtBegning(10); // 10
+linkedList.inserAtBegning(20); // 20 10 
+linkedList.inserAtBegning(30);  // 30 20 10
+linkedList.insertAtEnd(5) // 30 20 10 5
+linkedList.insertAtEnd(2)
 
 
 linkedList.printList();
