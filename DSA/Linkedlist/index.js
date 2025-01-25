@@ -84,15 +84,15 @@ Linkedlist.prototype.inserAtBegning = function(data){
 
 */
 
-Linkedlist.prototype.insert_At_Given_Node = function ( prevNode , data){
-    if(!prevNode){
-        console.log(' prevNode is not exit');
-        return;
-    }
+// Linkedlist.prototype.insertAtGivenNode = function( prevNode , data){
+//     if(!prevNode){
+//         console.log(' prevNode is not exit');
+//         return;
+//     }
 
-    const newNode = new Node(data , prevNode.next);
-    prevNode.next = newNode
-}
+//     // const newNode = new Node(data , prevNode.next);
+//     // prevNode.next = newNode
+
 
 
   //   Delete-first-Node 
@@ -101,8 +101,36 @@ Linkedlist.prototype.insert_At_Given_Node = function ( prevNode , data){
       this.head = this.head.next
   }
 
+   
 
+  // Insert a node at a given position
+    Linkedlist.prototype.insertAtPosition = function(data, position) {
+    if (position < 0) {
+      console.error("Invalid position");
+      return;
+    }
+
+
+    const newNode = new Node(data);
+    let current = this.head;
+    let previous = null;
+    let count = 0;
+
+    while (count < position && current) {
+      previous = current;
+      current = current.next;
+      count++;
+    }
+
+    if (count === position) {
+      previous.next = newNode;
+      newNode.next = current;
+    } else {
+      console.error("Position out of bounds");
+    }
+  }
   
+  // 
 
   // Example usage
 let linkedList = new Linkedlist();
@@ -111,6 +139,7 @@ linkedList.inserAtBegning(20); // 20 10
 linkedList.inserAtBegning(30);  // 30 20 10
 linkedList.insertAtEnd(5) // 30 20 10 5
 linkedList.insertAtEnd(2)
-
+linkedList.insertAtPosition(23 , 1);
+linkedList.delete_First_Node()
 
 linkedList.printList();
