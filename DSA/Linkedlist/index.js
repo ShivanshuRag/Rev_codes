@@ -130,7 +130,29 @@ Linkedlist.prototype.inserAtBegning = function(data){
     }
   }
   
-  // 
+  // Deletelast node 
+
+  Linkedlist.prototype.deleteLastNode = function(){
+
+    if(!this.head.next ){
+     
+     return this.head = null;
+
+
+    }
+    let current = this.head
+    let prev = null 
+
+    while( current.next){
+      prev = current 
+      current = current.next
+    }
+     
+     prev.next = null
+
+    
+      
+  }
 
   // Example usage
 let linkedList = new Linkedlist();
@@ -140,6 +162,7 @@ linkedList.inserAtBegning(30);  // 30 20 10
 linkedList.insertAtEnd(5) // 30 20 10 5
 linkedList.insertAtEnd(2)
 linkedList.insertAtPosition(23 , 1);
-linkedList.delete_First_Node()
+// linkedList.delete_First_Node()
+linkedList.deleteLastNode()
 
 linkedList.printList();
