@@ -14,6 +14,15 @@ class Linkedlist{
     constructor(){
         this.head = null
     }
+
+    printList() {
+        let current = this.head;
+        while (current) {
+          console.log(current.data);
+          current = current.next;
+        }
+      }
+
 }
 
 
@@ -29,6 +38,7 @@ class Linkedlist{
 
 Linkedlist.prototype.inserAtBegning = function(data){
    let newNode = new Node(data)
+   newNode.next = this.head; 
     this.head = newNode
 }
 
@@ -54,7 +64,7 @@ Linkedlist.prototype.inserAtBegning = function(data){
 
      let last = this.head 
 
-     while( last.next == null ){
+     while( last.next  ){
          last = last.next
      }
       
@@ -68,7 +78,7 @@ Linkedlist.prototype.inserAtBegning = function(data){
 /*
   -> user se prevnode lenge 
   -> create new node 
-  -> new node ke next me prevnode.next set kar denge
+  -> new node ke next me, prevnode.next set kar denge
   -> prevnode.next = new node 
 
 */
@@ -82,3 +92,22 @@ Linkedlist.prototype.insert_At_Given_Node = function ( prevNode , data){
     const newNode = new Node(data , prevNode.next);
     prevNode.next = newNode
 }
+
+
+  //   Delete-first-Node 
+
+  Linkedlist.prototype.delete_First_Node = function(){
+      this.head = this.head.next
+  }
+
+
+  
+
+  // Example usage
+let linkedList = new Linkedlist();
+linkedList.inserAtBegning(10);
+linkedList.inserAtBegning(20);
+linkedList.inserAtBegning(30);
+
+
+linkedList.printList();
