@@ -181,6 +181,28 @@ Linkedlist.prototype.inserAtBegning = function(data){
 
   }
 
+    // search a node and traverse 
+
+    Linkedlist.prototype.SearchNode = function (targetValue){
+
+      if (this.head === null) {
+        return "List is empty";
+      }
+    
+      let current = this.head;
+      let position = 0;
+    
+      while (current.data !== targetValue) {
+        current = current.next;
+        position++;
+        if (current === null) {
+          return `${targetValue} not found`;
+        }
+      }
+    
+      return `Found ${targetValue} at position ${position}`;
+    };
+
   // Example usage
 let linkedList = new Linkedlist();
 linkedList.inserAtBegning(10); // 10
@@ -193,5 +215,6 @@ linkedList.insertAtPosition(23 , 1); //30 23 20 10 5
 // linkedList.delete_First_Node()
 
 // linkedList.deleteLastNode()
-linkedList.DeleteAtPosition(20)
+// linkedList.DeleteAtPosition(20)
+linkedList.SearchNode(20)
 linkedList.printList();
