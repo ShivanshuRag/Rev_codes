@@ -154,6 +154,33 @@ Linkedlist.prototype.inserAtBegning = function(data){
       
   }
 
+  // delate a node at given position 
+
+  Linkedlist.prototype.DeleteAtPosition = function ( node){
+
+    let forDelete = node 
+    
+    let prev = null
+    let current = this.head
+
+    if( current.data == forDelete){
+      return this.head = null
+    }
+
+    while ( current.data !== forDelete){
+        prev = current
+        current = current.next
+    }
+     
+    if( current.next == null){
+      prev.next = null
+    }
+
+    prev.next = current.next
+
+
+  }
+
   // Example usage
 let linkedList = new Linkedlist();
 linkedList.inserAtBegning(10); // 10
@@ -161,8 +188,10 @@ linkedList.inserAtBegning(20); // 20 10
 linkedList.inserAtBegning(30);  // 30 20 10
 linkedList.insertAtEnd(5) // 30 20 10 5
 linkedList.insertAtEnd(2)
-linkedList.insertAtPosition(23 , 1);
-// linkedList.delete_First_Node()
-linkedList.deleteLastNode()
+linkedList.insertAtPosition(23 , 1); //30 23 20 10 5
 
+// linkedList.delete_First_Node()
+
+// linkedList.deleteLastNode()
+linkedList.DeleteAtPosition(20)
 linkedList.printList();
