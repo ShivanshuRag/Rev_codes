@@ -203,6 +203,25 @@ Linkedlist.prototype.inserAtBegning = function(data){
       return `Found ${targetValue} at position ${position}`;
     };
 
+    //  Reverse Linkedlist 
+
+    Linkedlist.prototype.reverseLinkedList = function(){
+       
+      let prev = null 
+      let curr = this.head
+      let next = null
+
+       while(curr.next !== null){
+          next = curr.next
+          curr.next = prev 
+          prev = curr 
+          curr = next 
+
+       }
+       this.head = prev 
+
+    }
+
   // Example usage
 let linkedList = new Linkedlist();
 linkedList.inserAtBegning(10); // 10
@@ -216,5 +235,6 @@ linkedList.insertAtPosition(23 , 1); //30 23 20 10 5
 
 // linkedList.deleteLastNode()
 // linkedList.DeleteAtPosition(20)
-linkedList.SearchNode(20)
+// linkedList.SearchNode(20)
+linkedList.reverseLinkedList()
 linkedList.printList();
