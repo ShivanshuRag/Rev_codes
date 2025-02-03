@@ -36,11 +36,33 @@ doublyLinkedList.prototype.insertAtBegining = function( node){
   
 }
 
+ doublyLinkedList.prototype.insertAtEnd = function(node){
+     let newNode = new Node(node)
+    
+     if (!this.head) { // List is empty
+      this.head = newNode;
+      this.tail = newNode;
+     }
+      let current = this.head
+
+     while (current.next !== null ){
+        current = current.next
+     }
+
+      newNode.prev = current.tail 
+      current.next  = newNode
+      current.tail = newNode
+      
+       
+   
+  
+ }
+
 let newLinkedList = new doublyLinkedList()
 
 newLinkedList.insertAtBegining(5)
 newLinkedList.insertAtBegining(4)
 newLinkedList.insertAtBegining(3)
 newLinkedList.insertAtBegining(2)
-
+newLinkedList.insertAtEnd(6)
 newLinkedList.printList()
