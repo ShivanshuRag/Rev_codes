@@ -26,12 +26,17 @@ class doublyLinkedList{
     }
 }
 
-doublyLinkedList.prototype.insertAtBegining = function( node){
-  let newNode = new Node(node)
-   
-   newNode.next = this.head 
-   newNode.tail = this.prev
-   this.head = newNode
+doublyLinkedList.prototype.insertAtBegining = function( data){
+  const newNode = new Node(data, this.head, null)
+
+  if (this.head !== null) {
+    this.head.prev = newNode
+    
+  }
+  this.head = newNode
+  if (this.tail === null) {
+    this.tail = newNode
+  }
    
   
 }
@@ -136,7 +141,28 @@ doublyLinkedList.prototype.insertAtBegining = function( node){
    return null; // Value not found in the list
   }
 
+  doublyLinkedList.prototype.reverse = function (){
+
+    let current = this.head;
+    let temp = null;
   
+    // Swap next and prev for all nodes of the list
+    while (current !== null) {
+      // Swapping
+      temp = current.prev;
+      current.prev = current.next;
+      current.next = temp;
+      // Move to the next node (which is previous node before swapping)
+      current = current.prev;
+    }
+  
+    // Before changing the head, check for the cases like empty list and list with only one node
+    if (temp != null) {
+      this.tail = this.head 
+      this.head = temp.prev
+    }
+
+}
 
 
 let newLinkedList = new doublyLinkedList()
@@ -145,10 +171,12 @@ newLinkedList.insertAtBegining(5)
 newLinkedList.insertAtBegining(4)
 newLinkedList.insertAtBegining(3)
 newLinkedList.insertAtBegining(2)
-newLinkedList.insertAtEnd(6)
+// newLinkedList.insertAtEnd(6)
 // newLinkedList.deleteFirstNode()
-newLinkedList.addAnyPosition(4, 20)
-newLinkedList.deleteAnyNode()
+// newLinkedList.addAnyPosition(4, 20)
 
 
+ newLinkedList.reverse()
 newLinkedList.printList()
+
+ 
