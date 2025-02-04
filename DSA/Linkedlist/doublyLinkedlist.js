@@ -96,6 +96,14 @@ doublyLinkedList.prototype.insertAtBegining = function( node){
 
  }
 
+ 
+
+      
+      
+     
+     
+ 
+
 
 let newLinkedList = new doublyLinkedList()
 
@@ -106,5 +114,6 @@ newLinkedList.insertAtBegining(2)
 newLinkedList.insertAtEnd(6)
 // newLinkedList.deleteFirstNode()
 newLinkedList.addAnyPosition(4, 20)
+
 
 newLinkedList.printList()
