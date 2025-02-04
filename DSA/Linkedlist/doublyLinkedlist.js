@@ -73,6 +73,29 @@ doublyLinkedList.prototype.insertAtBegining = function( node){
 
  }
 
+ doublyLinkedList.prototype.addAnyPosition = function(postion , node){
+     let newNode = new Node(node)
+
+     let current = this.head 
+
+     if ( !postion){
+       console.log(`In this Linkedlist  , this ${postion} node is not exits`  );
+       return
+     }
+        
+     while ( postion && current.data !== postion  ){
+          
+        current = current.next
+
+
+     }
+     
+     newNode.next = current.next
+     newNode.prev = current
+     current.next = newNode
+
+ }
+
 
 let newLinkedList = new doublyLinkedList()
 
@@ -81,6 +104,7 @@ newLinkedList.insertAtBegining(4)
 newLinkedList.insertAtBegining(3)
 newLinkedList.insertAtBegining(2)
 newLinkedList.insertAtEnd(6)
-newLinkedList.deleteFirstNode()
+// newLinkedList.deleteFirstNode()
+newLinkedList.addAnyPosition(4, 20)
 
 newLinkedList.printList()
