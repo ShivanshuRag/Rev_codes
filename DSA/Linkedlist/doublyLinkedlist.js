@@ -89,18 +89,13 @@ doublyLinkedList.prototype.insertAtBegining = function( data){
           
         current = current.next
 
-
      }
 
-     
-    //  newNode.next = current.next
-    //  newNode.prev = current
-    //  current.next = newNode
-
-    newNode.next = current.next
-     current.next = newNode
-     newNode.prev = current.tail
-     
+        newNode.next = current.next;
+        newNode.prev = current;
+        current.next.prev = newNode;
+        current.next = newNode;
+        
     
 
  }
@@ -177,7 +172,7 @@ newLinkedList.insertAtBegining(3)
 newLinkedList.insertAtBegining(2)
 newLinkedList.insertAtEnd(6)
 // newLinkedList.deleteFirstNode()
-// newLinkedList.addAnyPosition(4, 20)
+newLinkedList.addAnyPosition(4, 20)
 
 
  newLinkedList.reverse()
