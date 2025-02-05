@@ -41,22 +41,19 @@ doublyLinkedList.prototype.insertAtBegining = function( data){
   
 }
 
- doublyLinkedList.prototype.insertAtEnd = function(node){
-     let newNode = new Node(node)
+ doublyLinkedList.prototype.insertAtEnd = function(data){
+  const newNode = new Node(data, null, this.tail)
+
+  if (this.tail !== null) {
+    this.tail.next = newNode
     
-     if (!this.head) { // List is empty
-      this.head = newNode;
-      this.tail = newNode;
-     }
-      let current = this.head
+  }
 
-     while (current.next !== null ){
-        current = current.next
-     }
+  this.tail = newNode
 
-      newNode.prev = current.tail 
-      current.next  = newNode
-      current.tail = newNode
+  if (this.head === null) {
+    this.head = newNode
+  }
       
        
    
@@ -94,10 +91,17 @@ doublyLinkedList.prototype.insertAtBegining = function( data){
 
 
      }
+
      
-     newNode.next = current.next
-     newNode.prev = current
+    //  newNode.next = current.next
+    //  newNode.prev = current
+    //  current.next = newNode
+
+    newNode.next = current.next
      current.next = newNode
+     newNode.prev = current.tail
+     
+    
 
  }
 
@@ -171,7 +175,7 @@ newLinkedList.insertAtBegining(5)
 newLinkedList.insertAtBegining(4)
 newLinkedList.insertAtBegining(3)
 newLinkedList.insertAtBegining(2)
-// newLinkedList.insertAtEnd(6)
+newLinkedList.insertAtEnd(6)
 // newLinkedList.deleteFirstNode()
 // newLinkedList.addAnyPosition(4, 20)
 
