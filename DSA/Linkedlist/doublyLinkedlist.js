@@ -102,42 +102,33 @@ doublyLinkedList.prototype.insertAtBegining = function( data){
 
  
  doublyLinkedList.prototype.deleteAnyNode = function (value){
-      if (!this.head) return null;
-
-     let currentNode = this.head;
-
-    while (currentNode) {
-    if (currentNode.data === value) {
-      // If the node to be deleted is the head
-      if (currentNode === this.head) {
-        this.head = currentNode.next;
-        if (this.head) {
-          this.head.prev = null;
-        }
-      }
-
-      // If the node to be deleted is the tail
-      if (currentNode === this.tail) {
-        this.tail = currentNode.prev;
-        if (this.tail) {
-          this.tail.next = null;
-        }
-      }
-
-      // If the node to be deleted is in the middle
-      if (currentNode.prev) {
-        currentNode.prev.next = currentNode.next;
-      }
-      if (currentNode.next) {
-        currentNode.next.prev = currentNode.prev;
-      }
       
-      return currentNode;
+    let current = this.head 
+   
+    if ( current.data == value){
+      this.head = current.next 
+      current.prev = null
+      return
     }
-    currentNode = currentNode.next;
-  }
 
-   return null; // Value not found in the list
+    
+
+     while ( current.data !== value){
+       current = current.next
+     }
+      
+      if( current.next == null ){
+        this.tail = this.tail.prev
+        this.tail.next = null
+
+         return
+      }
+
+     current.prev.next = current.next;
+     current.next.prev = current.prev;
+
+
+     
   }
 
   doublyLinkedList.prototype.reverse = function (){
@@ -173,6 +164,7 @@ newLinkedList.insertAtBegining(2)
 newLinkedList.insertAtEnd(6)
 // newLinkedList.deleteFirstNode()
 newLinkedList.addAnyPosition(4, 20)
+// newLinkedList.deleteAnyNode(2)
 
 
  newLinkedList.reverse()
