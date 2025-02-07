@@ -7,7 +7,7 @@ class Queue{
     }
 
     enqueue(value){ // add value
-      this.Queue.unshift(value) // unshift method ek line me rakhta hai , FIFO principal
+      this.Queue.push(value) // push method ek line me rakhta hai , FIFO principal
     }
 
     dequeue(){ // remove value 
