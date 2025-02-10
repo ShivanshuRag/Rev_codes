@@ -96,30 +96,21 @@
         return node
       }
 
-      //  Birth first serach BST 
+      // InOrder Traversal
 
-      breadthFirstSearch = (root) => {
-        if (root === null) {
-          return // return empty array or message
+      inOrderTraversal(){
+        let result = []
+        this.inOrder(this.root , result)
+        return result;
+      }
+
+      inOrder(){
+        if( node !== null){
+
+           this.inOrder(node.left , result )
+           result.push(node.key)
+           this.inOrder(node.right , result)
         }
-      
-        const values = []
-        const queue = []
-      
-        while(queue.length > 0){
-          const node = queue.shift() // point of optimization
-          values.push(node.key)
-      
-          if (node.left !== null) {
-            queue.push(node.left)
-          }
-          if (node.right !== null) {
-            queue.push(node.right)
-          }
-        }
-      
-        return values
-      
       }
 
   }
@@ -131,6 +122,7 @@
    BSTTREE.insertNode(30)
    BSTTREE.insertNode(20)
    BSTTREE.insertNode(80)
-  //  BSTTREE.delete(20)
-   BSTTREE.breadthFirstSearch(40)
-   console.log(BSTTREE);
+  
+ 
+  //  console.log(BSTTREE);
+  console.log(BSTNode.inOrderTraversal());
