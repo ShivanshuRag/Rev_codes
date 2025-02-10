@@ -99,12 +99,13 @@
       // InOrder Traversal
 
       inOrderTraversal(){
+        if( this.root == null) return;
         let result = []
         this.inOrder(this.root , result)
         return result;
       }
 
-      inOrder(){
+      inOrder(node , result){
         if( node !== null){
 
            this.inOrder(node.left , result )
@@ -116,13 +117,16 @@
   }
 
 
-  let BSTTREE = new BinarySearchTree()
+  
 
-   BSTTREE.insertNode(40)
-   BSTTREE.insertNode(30)
-   BSTTREE.insertNode(20)
-   BSTTREE.insertNode(80)
+  const bst = new BinarySearchTree();
+  bst.root = new BSTNode(10);
+  bst.root.left = new BSTNode(5);
+  bst.root.right = new BSTNode(15);
+  bst.root.left.left = new BSTNode(2);
+  bst.root.left.right = new BSTNode(7);
+  bst.root.right.right = new BSTNode(20);
   
  
-  //  console.log(BSTTREE);
-  console.log(BSTNode.inOrderTraversal());
+  console.log(bst.inOrderTraversal())  // [2, 5, 7, 10, 15, 20]
+ 
