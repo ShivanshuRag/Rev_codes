@@ -116,17 +116,24 @@
 
   }
 
-
-  
-
   const bst = new BinarySearchTree();
-  bst.root = new BSTNode(10);
-  bst.root.left = new BSTNode(5);
-  bst.root.right = new BSTNode(15);
-  bst.root.left.left = new BSTNode(2);
-  bst.root.left.right = new BSTNode(7);
-  bst.root.right.right = new BSTNode(20);
+  bst.insertNode(10);
+  bst.insertNode(5);
+  bst.insertNode(15);
+  bst.insertNode(2);
+  bst.insertNode(7);
+  bst.insertNode(20);
+
+  console.log(bst.root);
+
+  // const bst = new BinarySearchTree();
+  // bst.root = new BSTNode(10);
+  // bst.root.left = new BSTNode(5);
+  // bst.root.right = new BSTNode(15);
+  // bst.root.left.left = new BSTNode(2);
+  // bst.root.left.right = new BSTNode(7);
+  // bst.root.right.right = new BSTNode(20);
   
  
-  console.log(bst.inOrderTraversal())  // [2, 5, 7, 10, 15, 20]
+ // console.log(bst.inOrderTraversal())  // [2, 5, 7, 10, 15, 20]
  
