@@ -23,7 +23,7 @@ const one = ()=> Promise.resolve("one")
 function highOrder( func , arg){
    return func(arg)
 }
-console.log(highOrder(Math.sqrt , 16)); 
+// console.log(highOrder(Math.sqrt , 16)); 
 
 
  function outerfunc (){
@@ -53,3 +53,20 @@ console.log(highOrder(Math.sqrt , 16));
       console.log('Hello, world!');
     }
   })();
+
+
+  let a = 10
+  let b = a ;
+
+    a = 20  
+
+      console.log(b);
+
+
+      let arr = [ 1, 2 ,3, 4,5,]
+
+      let newRR = arr
+
+      arr.push(6)
+
+      console.log(newRR);

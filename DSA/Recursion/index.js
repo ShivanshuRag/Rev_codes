@@ -45,4 +45,4 @@ function reverseStr(string) {
     return reverse;
 }
 
-console.log(reverseStr("shiavnshu")); 
+// console.log(reverseStr("shiavnshu")); 
