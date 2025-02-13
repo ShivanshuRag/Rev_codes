@@ -84,4 +84,6 @@
       bst.root.right.right = new BSTNode(20);
 
 
-      console.log(bst.postOrderTraversal()); // [ 2, 7, 5, 20, 15, 10 ] 
+    //   console.log(bst.postOrderTraversal()); // [ 2, 7, 5, 20, 15, 10 ] 
+    //   console.log(bst.preOrderTraversal())  // [ 10, 5, 2, 7, 15, 20 ]
+    console.log(bst.inOrderTraversal()) // [ 2, 5, 7, 10, 15, 20 ]
