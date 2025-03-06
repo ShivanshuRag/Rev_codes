@@ -112,17 +112,38 @@ console.log(a === b);
 
 
 // add two promises
-async function addPromises() {
-      try {
-        const promise1 = Promise.resolve(10); // Resolves to 10
-        const promise2 = Promise.resolve(20); // Resolves to 20
+// async function addPromises() {
+//       try {
+//         const promise1 = Promise.resolve(10); // Resolves to 10
+//         const promise2 = Promise.resolve(20); // Resolves to 20
     
-        const [result1, result2] = await Promise.all([promise1, promise2]);
-        const sum = result1 + result2; // Add the results
-        console.log("Sum:", sum); // Output: Sum: 30
-      } catch (error) {
-        console.error("Error:", error);
-      }
+//         const [result1, result2] = await Promise.all([promise1, promise2]);
+//         const sum = result1 + result2; // Add the results
+//         console.log("Sum:", sum); // Output: Sum: 30
+//       } catch (error) {
+//         console.error("Error:", error);
+//       }
+//     }
+    
+//     addPromises();
+
+
+//  Sleep 
+
+
+function sleep(millis) {
+      return new Promise((resolve) => {
+        setTimeout(resolve, millis);
+      });
     }
     
-    addPromises();
+    // Test case
+    async function testSleep() {
+      const t = Date.now(); // Record the start time
+      await sleep(100); // Sleep for 100 milliseconds
+      console.log(Date.now() - t); // Output: ~100 (time taken to sleep)
+    }
+    
+    testSleep();
+
+  
