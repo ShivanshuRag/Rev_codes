@@ -1,72 +1,111 @@
 
-//  one = 10
+// //  one = 10
 
 
-// console.log(one);
-//  let one ;
+// // console.log(one);
+// //  let one ;
 
-const one = ()=> Promise.resolve("one")
+// const one = ()=> Promise.resolve("one")
  
 
-// async function two(){
-//     console.log("two");
-//     const result = await one() // agar await lagta hai to aync nature , go into micro task, agar await nhi lagtae hai to call stack se hi execute ho jayega
-//     console.log(result);
+// // async function two(){
+// //     console.log("two");
+// //     const result = await one() // agar await lagta hai to aync nature , go into micro task, agar await nhi lagtae hai to call stack se hi execute ho jayega
+// //     console.log(result);
+// //  }
+
+// // console.log("start");
+// // two()
+
+// // console.log("end");
+
+
+// function highOrder( func , arg){
+//    return func(arg)
+// }
+// // console.log(highOrder(Math.sqrt , 16)); 
+
+
+//  function outerfunc (){
+//     const outervar = 'this is outer variable'
+
+//     function innerfunc(){
+//         console.log(outervar);
+//     }
+
+//     return innerfunc
 //  }
 
-// console.log("start");
-// two()
-
-// console.log("end");
+//  const closure = outerfunc()
+//   closure();
 
 
-function highOrder( func , arg){
-   return func(arg)
-}
-// console.log(highOrder(Math.sqrt , 16)); 
+
+// ;(function() {
+//     // Private variables and functions
+//     const name = 'John';
+//     function sayHello() {
+//       // console.log('Hello, ' + name + '!');
+//     }
+  
+//     // Public functions
+//     function greet() {
+//       console.log('Hello, world!');
+//     }
+//   })();
 
 
- function outerfunc (){
-    const outervar = 'this is outer variable'
+//   // let a = 10
+//   // let b = a ;
 
-    function innerfunc(){
-        console.log(outervar);
-    }
+//     a = 20  
 
-    return innerfunc
+//       // console.log(b);
+
+
+//       let arr = [ 1, 2 ,3, 4,5,]
+
+//       let newRR = arr
+
+//       arr.push(6)
+
+      // console.log(newRR);
+
+      let a = 5;
+      let b = 5;
+
+console.log(a == b); // Output: true
+console.log(a === b); // Output: true
+
+a = '5';
+b =  5;
+
+console.log(a == b); // Output: false
+console.log(a === b);
+
+
+// callback funct
+
+// function readFile ( filename , callback){
+//    fs.readFile(filename , 'utf8', (err , data)=>{
+//       if(err) return callback()
+//         callback(null,data)
+//    })
+
+// }
+
+//  readFile('indexedDB.jsx' , (err , data)=>{
+//     if( err) throw err
+//     console.log(data);
+//  })
+
+//  setTimeout(()=>{
+//    console.log('helllo');
+//  },1000)
+
+
+ function sum (...num){
+  return num.reduce((prev , curr)=> prev + curr , 0)
  }
 
- const closure = outerfunc()
-  closure();
-
-
-
-;(function() {
-    // Private variables and functions
-    const name = 'John';
-    function sayHello() {
-      console.log('Hello, ' + name + '!');
-    }
-  
-    // Public functions
-    function greet() {
-      console.log('Hello, world!');
-    }
-  })();
-
-
-  let a = 10
-  let b = a ;
-
-    a = 20  
-
-      console.log(b);
-
-
-      let arr = [ 1, 2 ,3, 4,5,]
-
-      let newRR = arr
-
-      arr.push(6)
-
-      console.log(newRR);
+ console.log(sum(1 , 23, 4));
