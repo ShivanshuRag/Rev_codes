@@ -104,8 +104,25 @@ console.log(a === b);
 //  },1000)
 
 
- function sum (...num){
-  return num.reduce((prev , curr)=> prev + curr , 0)
- }
+//  function sum (...num){
+//   return num.reduce((prev , curr)=> prev + curr , 0)
+//  }
 
- console.log(sum(1 , 23, 4));
+//  console.log(sum(1 , 23, 4));
+
+
+// add two promises
+async function addPromises() {
+      try {
+        const promise1 = Promise.resolve(10); // Resolves to 10
+        const promise2 = Promise.resolve(20); // Resolves to 20
+    
+        const [result1, result2] = await Promise.all([promise1, promise2]);
+        const sum = result1 + result2; // Add the results
+        console.log("Sum:", sum); // Output: Sum: 30
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+    
+    addPromises();
