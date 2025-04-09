@@ -1,12 +1,9 @@
-
 // //  one = 10
-
 
 // // console.log(one);
 // //  let one ;
 
 // const one = ()=> Promise.resolve("one")
- 
 
 // // async function two(){
 // //     console.log("two");
@@ -19,12 +16,10 @@
 
 // // console.log("end");
 
-
 // function highOrder( func , arg){
 //    return func(arg)
 // }
-// // console.log(highOrder(Math.sqrt , 16)); 
-
+// // console.log(highOrder(Math.sqrt , 16));
 
 //  function outerfunc (){
 //     const outervar = 'this is outer variable'
@@ -39,29 +34,25 @@
 //  const closure = outerfunc()
 //   closure();
 
-
-
 // ;(function() {
 //     // Private variables and functions
 //     const name = 'John';
 //     function sayHello() {
 //       // console.log('Hello, ' + name + '!');
 //     }
-  
+
 //     // Public functions
 //     function greet() {
 //       console.log('Hello, world!');
 //     }
 //   })();
 
-
 //   // let a = 10
 //   // let b = a ;
 
-//     a = 20  
+//     a = 20
 
 //       // console.log(b);
-
 
 //       let arr = [ 1, 2 ,3, 4,5,]
 
@@ -69,20 +60,19 @@
 
 //       arr.push(6)
 
-      // console.log(newRR);
+// console.log(newRR);
 
-      let a = 5;
-      let b = 5;
+// let a = 5;
+// let b = 5;
 
-console.log(a == b); // Output: true
-console.log(a === b); // Output: true
+// // console.log(a == b); // Output: true
+// // console.log(a === b); // Output: true
 
-a = '5';
-b =  5;
+// a = "5";
+// b = 5;
 
-console.log(a == b); // Output: false
-console.log(a === b);
-
+// console.log(a == b); // Output: false
+// console.log(a === b);
 
 // callback funct
 
@@ -103,20 +93,18 @@ console.log(a === b);
 //    console.log('helllo');
 //  },1000)
 
-
 //  function sum (...num){
 //   return num.reduce((prev , curr)=> prev + curr , 0)
 //  }
 
 //  console.log(sum(1 , 23, 4));
 
-
 // add two promises
 // async function addPromises() {
 //       try {
 //         const promise1 = Promise.resolve(10); // Resolves to 10
 //         const promise2 = Promise.resolve(20); // Resolves to 20
-    
+
 //         const [result1, result2] = await Promise.all([promise1, promise2]);
 //         const sum = result1 + result2; // Add the results
 //         console.log("Sum:", sum); // Output: Sum: 30
@@ -124,26 +112,81 @@ console.log(a === b);
 //         console.error("Error:", error);
 //       }
 //     }
-    
+
 //     addPromises();
 
+//  Sleep
 
-//  Sleep 
+// function sleep(millis) {
+//       return new Promise((resolve) => {
+//         setTimeout(resolve, millis);
+//       });
+//     }
 
+//     // Test case
+//     async function testSleep() {
+//       const t = Date.now(); // Record the start time
+//       await sleep(100); // Sleep for 100 milliseconds
+//       console.log(Date.now() - t); // Output: ~100 (time taken to sleep)
+//     }
 
-function sleep(millis) {
-      return new Promise((resolve) => {
-        setTimeout(resolve, millis);
-      });
-    }
-    
-    // Test case
-    async function testSleep() {
-      const t = Date.now(); // Record the start time
-      await sleep(100); // Sleep for 100 milliseconds
-      console.log(Date.now() - t); // Output: ~100 (time taken to sleep)
-    }
-    
-    testSleep();
+//     testSleep();
 
-  
+// const a = 18;
+// const b = 24;
+
+// function increment() {
+//   // increment value a by 1
+//   return a + 1;
+// }
+
+// console.log(increment()); // accepted output is 19 when incrementt by 1
+
+// Addition of two values
+// function add() {
+//   return a + b;
+// }
+// console.log(add());
+// let count = 0;
+// let vowel = "aeiouAEIOU";
+
+// for (let i = 0; i < str.length; i++) {
+//   for (let j = 0; j < vowel.length; j++) {
+//     if (str[i] == vowel[j]) {
+//       count++;
+//     }
+//   }
+// }
+
+// return count;
+// }
+
+// function countVowels(str) {
+
+// console.log(countVowels("RAM"));
+
+//
+
+function outer() {
+  function inner() {
+    return `Inner function called`;
+  }
+
+  return inner();
+}
+
+// console.log(outer());
+
+let computer = { cpu: 30 };
+let mac = {
+  ram: 32,
+  __proto__: computer,
+};
+
+// console.log(`computer`, mac.__proto__);
+let car = { tyers: 4, handle: 1 };
+let mercede = { model: "G-Wagon" };
+
+Object.setPrototypeOf(mercede, car);
+
+// console.log("mercede", Object.getPrototypeOf(mercede));
