@@ -190,3 +190,29 @@ let mercede = { model: "G-Wagon" };
 Object.setPrototypeOf(mercede, car);
 
 // console.log("mercede", Object.getPrototypeOf(mercede));
+
+class vehicle {
+  constructor(brand, model, date) {
+    this.brand = brand;
+    this.model = model;
+    this.date = date;
+  }
+
+  start() {
+    return ` this car is name ${this.brand} ${this.model} start in ${this.date}`;
+  }
+}
+
+let car1 = new vehicle("mercede", " G-wagon", 2025);
+
+// console.log(car1.start());
+
+class truck extends vehicle {
+  run() {
+    return ` this truck is name ${this.brand} ${this.model} start in ${this.date}`;
+  }
+}
+
+let truck1 = new truck(" TATA", "YODHA", 2024);
+
+console.log(truck1.run());
