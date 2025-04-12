@@ -215,4 +215,43 @@ class truck extends vehicle {
 
 let truck1 = new truck(" TATA", "YODHA", 2024);
 
-console.log(truck1.run());
+// console.log(truck1.run());
+
+class BankAccount {
+  constructor(balance = 0) {
+    this._balance = balance;
+  }
+
+  // Getter for balance
+  get balance() {
+    return this._balance;
+  }
+
+  // Setter for balance to prevent negative values
+  set balance(value) {
+    if (value < 0) {
+      this._balance = 0;
+    } else {
+      this._balance = value;
+    }
+  }
+
+  deposit(amount) {
+    this.balance += amount; // Uses the setter to update balance
+  }
+
+  withdraw(amount) {
+    if (this.balance < amount) {
+      console.log("Insuffient balance");
+      return;
+    }
+    this.balance -= amount; // Uses the setter to ensure non-negative balance
+  }
+}
+
+let bank1 = new BankAccount(100);
+
+bank1.deposit(50);
+bank1.withdraw(160);
+
+console.log(bank1.balance);
