@@ -254,4 +254,19 @@ let bank1 = new BankAccount(100);
 bank1.deposit(50);
 bank1.withdraw(160);
 
-console.log(bank1.balance);
+// console.log(bank1.balance);
+
+//  Genrator and  Iterator
+
+function* helloGuy() {
+  yield `I am first time Calling`;
+  yield `I am second time Calling`;
+  yield `I am third time Calling`;
+}
+
+let gen = helloGuy();
+
+console.log(gen.next().value);
+console.log(gen.next().value);
+console.log(gen.next().value);
+console.log(gen.next().value);
