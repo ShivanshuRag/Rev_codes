@@ -262,6 +262,9 @@ function* helloGuy() {
   yield `I am first time Calling`;
   yield `I am second time Calling`;
   yield `I am third time Calling`;
+  yield `I am fourth time Calling`;
+  yield `I am fifth time Calling`;
+  yield `I am sixth time Calling`;
 }
 
 let gen = helloGuy();
