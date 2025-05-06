@@ -265,6 +265,7 @@ function* helloGuy() {
   yield `I am fourth time Calling`;
   yield `I am fifth time Calling`;
   yield `I am sixth time Calling`;
+  yield `I am seventh time Calling`;
 }
 
 let gen = helloGuy();
@@ -273,3 +274,35 @@ let gen = helloGuy();
 // console.log(gen.next().value);
 // console.log(gen.next().value);
 // console.log(gen.next().value);
+
+// call apply bind
+let obj1 = {
+  name: "John",
+  age: 30,
+};
+let obj2 = {
+  name: "Doe",
+  age: 25,
+};
+let obj3 = {
+  name: "Smith",
+  age: 35,
+};
+function greet(greeting) {
+  console.log(
+    `${greeting}, my name is ${this.name} and I am ${this.age} years old.`
+  );
+}
+// Using call
+greet.call(obj1, "Hello"); // Output: Hello, my name is John and I am 30 years old.
+greet.call(obj2, "Hi"); // Output: Hi, my name is Doe and I am 25 years old.
+greet.call(obj3, "Hey"); // Output: Hey, my name is Smith and I am 35 years old.
+// Using apply
+greet.apply(obj1, ["Hello"]); // Output: Hello, my name is John and I am 30 years old.
+greet.apply(obj2, ["Hi"]); // Output: Hi, my name is Doe and I am 25 years old.
+greet.apply(obj3, ["Hey"]); // Output: Hey, my name is Smith and I am 35 years old.
+// Using bind
+let greetObj1 = greet.bind(obj1, "Hello");
+let greetObj2 = greet.bind(obj2, "Hi");
+let greetObj3 = greet.bind(obj3, "Hey");
+greetObj1(); // Output: Hello, my name is John and I am 30 years old.
