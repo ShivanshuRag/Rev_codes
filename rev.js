@@ -329,3 +329,7 @@ const { Lesson } = require("../models/lesson.model");
 const { Course } = require("../models/course.model");
 const { CourseService } = require("../services/course.service");
 const { CourseController } = require("../controllers/course.controller");
+
+const { CourseRepository } = require("../repositories/course.repository");
+const { CourseValidator } = require("../validators/course.validator");
+const { Course } = require("../models/course.model");
