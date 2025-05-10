@@ -324,3 +324,8 @@ const { LessonService } = require("../services/lesson.service");
 const { LessonController } = require("../controllers/lesson.controller");
 const { LessonRepository } = require("../repositories/lesson.repository");
 const { LessonValidator } = require("../validators/lesson.validator");
+
+const { Lesson } = require("../models/lesson.model");
+const { Course } = require("../models/course.model");
+const { CourseService } = require("../services/course.service");
+const { CourseController } = require("../controllers/course.controller");
