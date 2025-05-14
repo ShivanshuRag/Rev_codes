@@ -24,8 +24,9 @@ function App() {
     password();
   }, [charlength]);
 
-  function copyPassword() {}
-
+  function copyPassword() {
+    navigator.clipboard.writeText(input);
+  }
   return (
     <>
       <div className=" justify-center ">
@@ -37,7 +38,10 @@ function App() {
               onChange={(e) => e.target.value}
               className=" text-amber-700 p-2 rounded-lg  border-2 w-auto outline-none"
             />
-            <button className=" bg-blue-800 text-white font-bold p-2 hover:bg-blue-700 rounded-lg">
+            <button
+              className=" bg-blue-800 text-white font-bold p-2 hover:bg-blue-700 rounded-lg"
+              onClick={copyPassword}
+            >
               copy
             </button>
           </span>
