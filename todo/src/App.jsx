@@ -2,16 +2,16 @@ import { useState } from "react";
 import "./App.css";
 import TodoForm from "./components/TodoForm";
 import { TodoContextProvider } from "./context/todoContext";
-import { useId } from "react";
+// import { useId } from "react";
 import TodoItem from "./components/TodoItem";
 import { useEffect } from "react";
 
 function App() {
   const [todos, setTodos] = useState([]);
-  const todoId = useId();
+  // const todoId = useId();
 
   const addTodo = (todo) => {
-    setTodos((prev) => [{ id: todoId, ...todo }, ...prev]);
+    setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev]);
   };
 
   const updateTodo = (id, todo) => {
