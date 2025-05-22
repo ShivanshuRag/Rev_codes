@@ -8,7 +8,6 @@ import { useEffect } from "react";
 
 function App() {
   const [todos, setTodos] = useState([]);
-  // const todoId = useId();
 
   const addTodo = (todo) => {
     setTodos((prev) => [{ id: Date.now(), ...todo }, ...prev]);
