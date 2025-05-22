@@ -57,9 +57,9 @@ function App() {
             Manage Your Todos
           </h1>
           <div className="mb-4">{<TodoForm />}</div>
-          <div className="flex flex-wrap gap-y-3">
+          <div className="flex flex-wrap gap-y-3  gap-x-3">
             {todos.map((todo) => (
-              <div key={todo.id} className="w-full">
+              <div key={todo.id} className="w-full ">
                 {<TodoItem todo={todo} />}
               </div>
             ))}
