@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beautiful Word Suggester</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Global Styles & Font */
+      body {
+        font-family: "Poppins", sans-serif; /* A clean, modern font */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: linear-gradient(
+          135deg,
+          #f0f4f8,
+          #d9e2ec
+        ); /* Subtle gradient background */
+        margin: 0;
+        color: #333;
+      }
+
+      /* Container for the main content */
+      .container {
+        background-color: #ffffff;
+        padding: 40px;
+        border-radius: 12px; /* More rounded corners */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Deeper shadow for depth */
+        text-align: center;
+        width: 90%;
+        max-width: 450px; /* Slightly wider container */
+        border: 1px solid #e0e6ed; /* Subtle border */
+      }
+
+      h1 {
+        color: #2c3e50;
+        margin-bottom: 30px;
+        font-weight: 600; /* Slightly bolder heading */
+        font-size: 2em;
+      }
+
+      /* Input Box Styling */
+      input[type="text"] {
+        width: calc(100% - 24px); /* Account for padding */
+        padding: 14px 12px; /* More vertical padding */
+        margin-bottom: 15px; /* Clearer separation */
+        border: 1px solid #cad1d8; /* Light grey border */
+        border-radius: 8px; /* Nicely rounded input */
+        font-size: 1.1em; /* Slightly larger text */
+        box-sizing: border-box;
+        outline: none;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+        font-weight: 400;
+      }
+
+      input[type="text"]::placeholder {
+        color: #9ab; /* Lighter placeholder text */
+      }
+
+      input[type="text"]:focus {
+        border-color: #4a90e2; /* Vibrant blue on focus */
+        box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.2); /* Soft blue glow */
+      }
+
+      /* Suggestions List Styling */
+      #suggestions {
+        background-color: #ffffff;
+        border: 1px solid #cad1d8;
+        border-radius: 8px; /* Consistent rounded corners */
+        max-height: 250px; /* Taller list */
+        overflow-y: auto;
+        list-style: none;
+        padding: 0;
+        margin: 0; /* Remove default margin */
+        text-align: left;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Finer shadow */
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px); /* Slide up from slightly below */
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out,
+          visibility 0.3s;
+      }
+
+      /* Scrollbar styling for a cleaner look */
+      #suggestions::-webkit-scrollbar {
+        width: 8px;
+      }
+      #suggestions::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+      #suggestions::-webkit-scrollbar-thumb {
+        background: #888;
+        border-radius: 10px;
+      }
+      #suggestions::-webkit-scrollbar-thumb:hover {
+        background: #555;
+      }
+
+      /* Class to show the suggestions list */
+      #suggestions.has-suggestions {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      #suggestions li {
+        padding: 12px 18px; /* More padding */
+        cursor: pointer;
+        border-bottom: 1px solid #f0f4f8; /* Very light separator */
+        font-size: 1em;
+        color: #555;
+        transition: background-color 0.2s ease, color 0.2s ease;
+        display: flex; /* Use flex for potential future icons/scores */
+        align-items: center;
+      }
+
+      #suggestions li:last-child {
+        border-bottom: none; /* No border on the last item */
+      }
+
+      #suggestions li:hover {
+        background-color: #eef2f6; /* Soft highlight on hover */
+        color: #333;
+      }
+
+      #suggestions li.no-suggestions,
+      #suggestions li.loading {
+        color: #888;
+        font-style: italic;
+        padding: 15px; /* More padding for these messages */
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Word Suggester</h1>
+      <input type="text" id="wordInput" placeholder="Start typing..." />
+      <ul id="suggestions"></ul>
+    </div>
+
+    <script>
+      const wordInput = document.getElementById("wordInput");
+      const suggestionsList = document.getElementById("suggestions");
+      let debounceTimer;
+      let abortController;
+
+      function displaySuggestions(suggestions) {
+        suggestionsList.innerHTML = "";
+        suggestionsList.classList.remove("has-suggestions"); // Hide list by default
+
+        const currentInput = wordInput.value.trim();
+
+        if (currentInput === "") {
+          return;
+        }
+
+        if (suggestions.length === 0) {
+          const noSuggestionsItem = document.createElement("li");
+          noSuggestionsItem.classList.add("no-suggestions");
+          noSuggestionsItem.textContent = "No suggestions found.";
+          suggestionsList.appendChild(noSuggestionsItem);
+          suggestionsList.classList.add("has-suggestions");
+          return;
+        }
+
+        suggestions.forEach((wordData) => {
+          const listItem = document.createElement("li");
+          listItem.textContent = wordData.word;
+          listItem.addEventListener("click", () => {
+            wordInput.value = wordData.word;
+            suggestionsList.innerHTML = "";
+            suggestionsList.classList.remove("has-suggestions");
+            wordInput.focus(); // Keep focus on the input after selecting
+          });
+          suggestionsList.appendChild(listItem);
+        });
+        suggestionsList.classList.add("has-suggestions");
+      }
+
+      async function fetchSuggestions(partialWord) {
+        if (abortController) {
+          abortController.abort();
+        }
+        abortController = new AbortController();
+        const signal = abortController.signal;
+
+        suggestionsList.innerHTML =
+          '<li class="loading">Loading suggestions...</li>';
+        suggestionsList.classList.add("has-suggestions");
+
+        if (partialWord.length < 2) {
+          displaySuggestions([]);
+          return;
+        }
+
+        try {
+          const apiUrl = `https://api.datamuse.com/sug?s=${partialWord}&max=10`;
+          const response = await fetch(apiUrl, { signal });
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const data = await response.json();
+          displaySuggestions(data);
+        } catch (error) {
+          if (error.name === "AbortError") {
+            console.log("Fetch aborted for:", partialWord);
+            return;
+          }
+          console.error("Error fetching suggestions:", error);
+          suggestionsList.innerHTML =
+            '<li class="no-suggestions">Error fetching suggestions.</li>';
+          suggestionsList.classList.add("has-suggestions");
+        } finally {
+          abortController = null;
+        }
+      }
+
+      wordInput.addEventListener("input", (event) => {
+        const currentInput = event.target.value.trim();
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(() => {
+          fetchSuggestions(currentInput);
+        }, 200);
+      });
+
+      wordInput.addEventListener("blur", () => {
+        setTimeout(() => {
+          suggestionsList.innerHTML = "";
+          suggestionsList.classList.remove("has-suggestions");
+        }, 150);
+      });
+
+      wordInput.addEventListener("focus", () => {
+        const currentInput = wordInput.value.trim();
+        if (currentInput.length >= 2) {
+          fetchSuggestions(currentInput);
+        }
+      });
+    </script>
+  </body>
+</html>
