@@ -5,101 +5,139 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Beautiful Word Suggester</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
     <style>
       /* Global Styles & Font */
       body {
-        font-family: "Poppins", sans-serif; /* A clean, modern font */
+        font-family: "Poppins", sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
         background: linear-gradient(
           135deg,
-          #f0f4f8,
-          #d9e2ec
-        ); /* Subtle gradient background */
+          #a8dadc,
+          #457b9d
+        ); /* Vibrant blue-green gradient */
         margin: 0;
         color: #333;
+        overflow: hidden;
       }
 
       /* Container for the main content */
       .container {
         background-color: #ffffff;
-        padding: 40px;
-        border-radius: 12px; /* More rounded corners */
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); /* Deeper shadow for depth */
+        padding: 45px; /* Slightly more padding */
+        border-radius: 20px; /* Even more rounded corners */
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2); /* Deeper, more colorful shadow */
         text-align: center;
         width: 90%;
-        max-width: 450px; /* Slightly wider container */
-        border: 1px solid #e0e6ed; /* Subtle border */
+        max-width: 550px; /* Wider container */
+        border: 1px solid rgba(255, 255, 255, 0.5); /* Semi-transparent white border */
+        box-sizing: border-box;
+        animation: fadeInPop 0.8s ease-out forwards; /* More dramatic animation */
+        background: linear-gradient(
+          145deg,
+          #ffffff,
+          #f8faff
+        ); /* Subtle inner gradient */
+      }
+
+      @keyframes fadeInPop {
+        from {
+          opacity: 0;
+          transform: translateY(-50px) scale(0.8);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
       }
 
       h1 {
-        color: #2c3e50;
-        margin-bottom: 30px;
-        font-weight: 600; /* Slightly bolder heading */
-        font-size: 2em;
+        color: #1d3557; /* Darker blue for heading */
+        margin-bottom: 35px;
+        font-weight: 800; /* Extra bold heading */
+        font-size: 2.5em;
+        letter-spacing: -1px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.05); /* Subtle text shadow */
       }
 
       /* Input Box Styling */
       input[type="text"] {
-        width: calc(100% - 24px); /* Account for padding */
-        padding: 14px 12px; /* More vertical padding */
-        margin-bottom: 15px; /* Clearer separation */
-        border: 1px solid #cad1d8; /* Light grey border */
-        border-radius: 8px; /* Nicely rounded input */
-        font-size: 1.1em; /* Slightly larger text */
+        width: calc(100% - 32px); /* Account for padding */
+        padding: 18px 16px; /* More padding */
+        margin-bottom: 25px; /* Clearer separation */
+        border: 2px solid #a8dadc; /* Blue-green border */
+        border-radius: 12px; /* Nicely rounded input */
+        font-size: 1.2em; /* Larger text */
         box-sizing: border-box;
         outline: none;
-        transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
-        font-weight: 400;
+        transition: border-color 0.4s ease, box-shadow 0.4s ease,
+          background-color 0.4s ease;
+        font-weight: 500;
+        color: #333;
+        background-color: #f0f8ff; /* Light blue background */
       }
 
       input[type="text"]::placeholder {
-        color: #9ab; /* Lighter placeholder text */
+        color: #6a8e9e; /* Muted blue for placeholder */
+        font-weight: 400;
       }
 
       input[type="text"]:focus {
-        border-color: #4a90e2; /* Vibrant blue on focus */
-        box-shadow: 0 0 0 4px rgba(74, 144, 226, 0.2); /* Soft blue glow */
+        border-color: #457b9d; /* Deeper blue on focus */
+        box-shadow: 0 0 0 6px rgba(69, 123, 157, 0.3); /* Soft blue glow */
+        background-color: #ffffff; /* White background on focus */
       }
 
       /* Suggestions List Styling */
       #suggestions {
-        background-color: #ffffff;
-        border: 1px solid #cad1d8;
-        border-radius: 8px; /* Consistent rounded corners */
-        max-height: 250px; /* Taller list */
+        background: linear-gradient(
+          160deg,
+          #ffffff,
+          #f0f8ff
+        ); /* Subtle gradient for list background */
+        border: 1px solid #cce7e8;
+        border-radius: 15px; /* Consistent rounded corners */
+        max-height: 300px; /* Taller list */
         overflow-y: auto;
         list-style: none;
-        padding: 0;
-        margin: 0; /* Remove default margin */
+        padding: 5px 0; /* Add slight vertical padding */
+        margin: 0;
         text-align: left;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); /* Finer shadow */
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Finer shadow */
         opacity: 0;
         visibility: hidden;
-        transform: translateY(10px); /* Slide up from slightly below */
-        transition: opacity 0.3s ease-out, transform 0.3s ease-out,
-          visibility 0.3s;
+        transform: translateY(20px); /* Slide up from slightly below */
+        transition: opacity 0.4s ease-out, transform 0.4s ease-out,
+          visibility 0.4s ease-out;
       }
 
       /* Scrollbar styling for a cleaner look */
       #suggestions::-webkit-scrollbar {
-        width: 8px;
+        width: 10px; /* Wider scrollbar */
       }
       #suggestions::-webkit-scrollbar-track {
-        background: #f1f1f1;
+        background: #eefbff; /* Light blue track */
         border-radius: 10px;
       }
       #suggestions::-webkit-scrollbar-thumb {
-        background: #888;
+        background: linear-gradient(
+          180deg,
+          #8ecae6,
+          #219ebc
+        ); /* Blue gradient thumb */
         border-radius: 10px;
       }
       #suggestions::-webkit-scrollbar-thumb:hover {
-        background: #555;
+        background: linear-gradient(
+          180deg,
+          #219ebc,
+          #023047
+        ); /* Darker gradient on hover */
       }
 
       /* Class to show the suggestions list */
@@ -110,31 +148,96 @@
       }
 
       #suggestions li {
-        padding: 12px 18px; /* More padding */
+        padding: 16px 25px; /* More padding */
         cursor: pointer;
-        border-bottom: 1px solid #f0f4f8; /* Very light separator */
-        font-size: 1em;
-        color: #555;
-        transition: background-color 0.2s ease, color 0.2s ease;
-        display: flex; /* Use flex for potential future icons/scores */
+        border-bottom: 1px solid #e0f2f7; /* Very light separator */
+        font-size: 1.1em;
+        color: #3d5a80; /* Muted blue for text */
+        transition: background-color 0.3s ease, color 0.3s ease,
+          transform 0.15s ease-out;
+        display: flex;
         align-items: center;
+        position: relative; /* For the pseudo-element glow */
+        overflow: hidden; /* Ensure glow stays within bounds */
       }
 
       #suggestions li:last-child {
-        border-bottom: none; /* No border on the last item */
+        border-bottom: none;
+      }
+
+      #suggestions li::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%; /* Start off-screen to the left */
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          rgba(144, 202, 249, 0.3) 0%,
+          rgba(69, 123, 157, 0.3) 100%
+        ); /* Colorful gradient for hover effect */
+        transition: left 0.3s ease-out;
+        z-index: 0;
+      }
+
+      #suggestions li:hover::before {
+        left: 0; /* Slide in the gradient on hover */
+      }
+
+      #suggestions li span {
+        position: relative; /* Ensure text is above the pseudo-element */
+        z-index: 1;
       }
 
       #suggestions li:hover {
-        background-color: #eef2f6; /* Soft highlight on hover */
-        color: #333;
+        color: #1d3557; /* Darker blue on hover */
+        transform: translateX(5px); /* More pronounced slide effect */
+        background-color: transparent; /* Background handled by ::before */
+      }
+
+      #suggestions li:active {
+        transform: scale(0.98); /* Slight press effect */
       }
 
       #suggestions li.no-suggestions,
       #suggestions li.loading {
-        color: #888;
+        color: #6a8e9e;
         font-style: italic;
-        padding: 15px; /* More padding for these messages */
+        padding: 20px;
         text-align: center;
+        font-size: 1em;
+        background-color: transparent; /* No hover effect on these */
+        cursor: default;
+      }
+
+      #suggestions li.no-suggestions::before,
+      #suggestions li.loading::before {
+        content: none; /* Disable hover glow for these */
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 600px) {
+        .container {
+          padding: 30px;
+          margin: 20px;
+          border-radius: 15px;
+        }
+
+        h1 {
+          font-size: 2em;
+          margin-bottom: 25px;
+        }
+
+        input[type="text"] {
+          font-size: 1.05em;
+          padding: 14px 12px;
+        }
+
+        #suggestions li {
+          padding: 12px 20px;
+          font-size: 1em;
+        }
       }
     </style>
   </head>
@@ -158,7 +261,7 @@
         const currentInput = wordInput.value.trim();
 
         if (currentInput === "") {
-          return;
+          return; // Do not show suggestions if input is empty
         }
 
         if (suggestions.length === 0) {
@@ -172,7 +275,11 @@
 
         suggestions.forEach((wordData) => {
           const listItem = document.createElement("li");
-          listItem.textContent = wordData.word;
+          // Wrap text in a span for correct z-index with pseudo-element glow
+          const span = document.createElement("span");
+          span.textContent = wordData.word;
+          listItem.appendChild(span);
+
           listItem.addEventListener("click", () => {
             wordInput.value = wordData.word;
             suggestionsList.innerHTML = "";
@@ -186,22 +293,24 @@
 
       async function fetchSuggestions(partialWord) {
         if (abortController) {
-          abortController.abort();
+          abortController.abort(); // Abort previous request if any
         }
         abortController = new AbortController();
         const signal = abortController.signal;
 
+        // Show loading state immediately
         suggestionsList.innerHTML =
           '<li class="loading">Loading suggestions...</li>';
         suggestionsList.classList.add("has-suggestions");
 
         if (partialWord.length < 2) {
+          // Clear suggestions if input is too short
           displaySuggestions([]);
           return;
         }
 
         try {
-          const apiUrl = `https://api.datamuse.com/sug?s=${partialWord}&max=10`;
+          const apiUrl = `https://api.datamuse.com/sug?s=${partialWord}&max=20`;
           const response = await fetch(apiUrl, { signal });
           if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
@@ -211,14 +320,14 @@
         } catch (error) {
           if (error.name === "AbortError") {
             console.log("Fetch aborted for:", partialWord);
-            return;
+            return; // Do nothing if fetch was intentionally aborted
           }
           console.error("Error fetching suggestions:", error);
           suggestionsList.innerHTML =
-            '<li class="no-suggestions">Error fetching suggestions.</li>';
+            '<li class="no-suggestions">Error fetching suggestions. Please try again.</li>';
           suggestionsList.classList.add("has-suggestions");
         } finally {
-          abortController = null;
+          abortController = null; // Clear controller regardless of success or failure
         }
       }
 
@@ -227,18 +336,20 @@
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(() => {
           fetchSuggestions(currentInput);
-        }, 200);
+        }, 250); // Slightly increased debounce for better user experience
       });
 
       wordInput.addEventListener("blur", () => {
+        // Use a slightly longer timeout to allow click on suggestion to register
         setTimeout(() => {
           suggestionsList.innerHTML = "";
           suggestionsList.classList.remove("has-suggestions");
-        }, 150);
+        }, 200);
       });
 
       wordInput.addEventListener("focus", () => {
         const currentInput = wordInput.value.trim();
+        // Only fetch on focus if there's already input
         if (currentInput.length >= 2) {
           fetchSuggestions(currentInput);
         }
