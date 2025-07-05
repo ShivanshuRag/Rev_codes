@@ -31,14 +31,15 @@
 # x = 3 or 4
 # print(x)
 
-x = int(input("Enter the marks :  "))
+# x = int(input("Enter the marks :  "))
 
-if x > 90:
-    print('A')
-elif x > 80:
-    print('B')
-elif x > 70:
-    print('C')  
-else:
-    print('D')          
+# if x > 90:
+#     print('A')
+# elif x > 80:
+#     print('B')
+# elif x > 70:
+#     print('C')  
+# else:
+#     print('D')          
+
 
