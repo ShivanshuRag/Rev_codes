@@ -202,3 +202,77 @@ File "<stdin>", line 1, in <module>
 StopIteration
 
 and behind the sence aise hi work karta h , agar chije iterable hue
+to aap esse check kar sakte h
+
+for loop se bhi file handle kar sakte h
+
+for line in open('iterable.py'):
+... print(line)
+...
+import time
+
+username = " "
+
+if username is " " :
+
+    print(" Enter the username ")
+
+else:
+
+    print(username)
+
+ye sab kaise ? , kyoki ye jo h for iterable tool h , esme pahle se hi aisi coding ki gaye h , sab kuch handle karne ke liye
+
+while loop se
+
+f = open('iterable.py')
+
+> > > while True:
+> > > ... line = f.readline()
+> > > ... if not line: break
+> > > ... print(line , end='')
+
+ans
+
+import time
+
+username = " "
+if username is " " :
+print(" Enter the username ")
+
+else:
+print(username)>>>
+
+    ye raha sab file ko handle ke liye
+
+# important - file ka khud ka iter tool h , ye python me by default h aur kisi me nhi hota h ,like list , range ,dict etc
+
+     f = open('iterable.py')  -> eska khud ka iter tool a jata h  behind the sence
+
+     f = open('iterable.py')
+     iter(f) is f  = True
+
+kyoki f variable file ke iter tool ka use ho raha h,
+
+ye raha list ke case me :
+
+l = [1,2,3,4]
+
+> > > iter(l) is l
+> > > False
+
+# agar aap kyo bhi iter tool use kar rhe h , kisi iterable object ke case me , to jo varible us iter obejct hold kar raha to uski memory loction ki id/reference same rahegi aur vo hamesa stating ko hi point karega , kyoki ye sab behind the **next** method interally manage karta h apne se
+
+l = [1 ,2, 4,5]
+
+> > > list = iter(l)
+> > > list
+> > > <list_iterator object at 0x102d2f3a0>
+> > > next(list)
+> > > 1
+> > > list
+> > > <list_iterator object at 0x102d2f3a0>
+> > > next(list)
+> > > 2
+> > > list
+> > > <list_iterator object at 0x102d2f3a0>
