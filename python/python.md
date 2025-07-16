@@ -78,3 +78,127 @@ yaha pe l2 ne copy banaya l1 ki , jisse naya object bna memory me aur l2 es naye
 > > > True
 > > > m1 is m2 // is method memory ke level per check karta h value , refernce bhi , agar dono ek object ko refer karenge to hi // true hoga
 > > > False
+
+# - import math
+
+math.floor(3.5) // 3
+
+math.floor(-3.5) // -4
+
+# - floor method - hamesha neeche ki oor jayegi ,
+
+math.trunc(3.5) // 3
+
+math.trunc(-3.5) // -3
+
+# - ye zero ki oor le jata hai
+
+<!--  for randam value  -->
+
+import random
+
+random.random(). // 0 - 1 ke beech me
+
+random.randint(1 , 100) // 1 - 100 ke beech - 100 exclude h
+
+l1 = ["mango" , "apple", "banana", "papaya"]
+
+random.choice(l1) // esse l1 ki value me se hi random hoga
+
+- python me bhi agar
+
+  0.1 +0.1+ 0.1
+
+ans- 0.30000000000000004
+
+aur agar esme minus karen
+
+0.1 + 0.1 + 0.1 - 0.3
+
+ans- 5.551115123125783e-17
+
+to esse precise ke liye decimal library import karo
+
+   <!--  String  -->
+
+    agar kahi aisa syntax me print karana ho
+
+-> hello = "he said , " you are the best " "
+
+      to print karne me problem hoti h
+
+
+    -> hello = "he said , \" you are the best\" "   ye h sahi tarika
+
+
+
+
+    and kabhi path print karna ho
+
+    path =  c:\user\pwd\md
+
+    ye h solution  path = r"c:\user\pwd\md"
+
+    then print(path)
+
+
+
+     <!-- dict  -->
+
+keys = ["mango" , "lemon" , "orange"]
+
+default_value = "delicious"
+
+> > > new_dict = dict.fromkeys(keys , default_value)
+
+> > > print(new_dict) // {'mango': 'delicious', 'lemon': 'delicious', 'orange': 'delicious'}
+
+     <!-- behind the scene of loop  -->
+
+
+         iteration tool
+       ( for , comprehension)--------------------> iterable Object
+                                 iter()     (list , range , dict , file)
+                                                     |
+                                                     |
+                                                     |
+                                                     |
+                            __next__ <---------------|
+
+aur iteration tool bhi **next** method ko point karta h ,
+
+- iter() - method h iterate ke liye internally bhi esi naam se hota h
+- next()/ **next**() / **next** -> ye bhi method h
+
+behind the scene python aise hi work karta h , agar iterable tool use kar rahe h
+
+file - file ek page jisme line by kuch likha hota , bas usi ko read karna hota , jaise pahle line kuch , phir dusare line kuch aise line by kuch n kuch likha hota h,
+
+file ke me
+f = open('iterable.py')
+f.readline() -> realine()method bhi internally next() method use karta h , but readline() method last iteration ko -> acche se handle karta h -> agar pura page read hoga gaya to readline() -> '' ye print karne lagta h.
+
+    f.readline()  -> pahli iteration me
+
+'import time\n'
+
+    f.readline()
+
+'\n'
+
+f.readline()
+'username = " "\n'
+
+so on and last. me
+
+f.readline(). -> and me ye print hone suru hone lagta h
+''
+
+but next() method ke case me -> stopItration ka message show hota h bas
+aur behind the secene readline() bhi **next**() method ko use karta h
+f.**next**()
+Traceback (most recent call last):
+File "<stdin>", line 1, in <module>
+StopIteration
+
+and behind the sence aise hi work karta h , agar chije iterable hue
