@@ -276,3 +276,36 @@ l = [1 ,2, 4,5]
 > > > 2
 > > > list
 > > > <list_iterator object at 0x102d2f3a0>
+
+              <!-- def (function)  -->
+
+      agar function execute ke samay multiple arguments pass kar de to use handle karne ke liye
+
+
+      def sum_all(*args):  // ek estrik
+        sum(args)
+
+        print(sum_all(2 ,3)). // 5
+        print(sum_all(2 ,3, 4, 5, 6,7)) // 27
+
+create a function that accept any number keyword arguments and print in format of key , value
+
+> def multiple_keyvalues( **kwargs ): // yaha pr 2 estrik. **kwargs
+
+> for key,value in multiple_keyvalues.items():
+
+>     print( f"{ key} : {value}"). // f - formating style
+
+> multiple_keyvalues( name="Shaktiman" , power="dancing" , love="geeta")
+> multiple_keyvalues( name="Shaktiman" )
+
+# yeild method -> ye method bhi return karta , aur state bhi yaad rakhta hai
+
+    def even_genrator(limit):
+       for i in range( 2 , limit + 1, 2):
+             yeild i
+
+     for num in even_genrator(10)
+
+          print(num)     // 2 4 6 8 10
+
