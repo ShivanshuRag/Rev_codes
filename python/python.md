@@ -165,10 +165,10 @@ default_value = "delicious"
                                                      |
                             __next__ <---------------|
 
-aur iteration tool bhi **next** method ko point karta h ,
+aur iteration tool bhi "**next**"(underScore underScore next underScore underScore ) method ko point karta h ,
 
 - iter() - method h iterate ke liye internally bhi esi naam se hota h
-- next()/ **next**() / **next** -> ye bhi method h
+- next()/ "**next**()" / "**next**" -> ye bhi method h
 
 behind the scene python aise hi work karta h , agar iterable tool use kar rahe h
 
@@ -261,7 +261,7 @@ l = [1,2,3,4]
 > > > iter(l) is l
 > > > False
 
-# agar aap kyo bhi iter tool use kar rhe h , kisi iterable object ke case me , to jo varible us iter obejct hold kar raha to uski memory loction ki id/reference same rahegi aur vo hamesa stating ko hi point karega , kyoki ye sab behind the **next** method interally manage karta h apne se
+# agar aap koi bhi iter tool use kar rhe h , kisi iterable object ke case me , to jo varible us iter obejct hold kar raha to uski memory loction ki id/reference same rahegi aur vo hamesa stating ko hi point karega , kyoki ye sab behind the **next** method interally manage karta h apne se
 
 l = [1 ,2, 4,5]
 
@@ -308,4 +308,3 @@ create a function that accept any number keyword arguments and print in format o
      for num in even_genrator(10)
 
           print(num)     // 2 4 6 8 10
-

@@ -1,0 +1,14 @@
+Package            Version
+------------------ ---------
+certifi            2025.7.14
+charset-normalizer 3.4.2
+dnspython          2.7.0
+idna               3.10
+pip                25.1
+pymongo            4.13.2
+requests           2.32.4
+setuptools         78.1.1
+urllib3            2.5.0
+wheel              0.45.1
+
+(myenv) shivanshusingh~$pip list > requirement.txt , ye command h 
