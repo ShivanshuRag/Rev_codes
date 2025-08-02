@@ -2,7 +2,7 @@
 from pymongo import MongoClient
 from bson  import ObjectId
 
-client = MongoClient("mongodb+srv://youtubePy:pyyoutube143@cluster0.7o03egb.mongodb.net/",tlsAllowInvalidCertificates=True)
+client = MongoClient("mongodb+srv://youtubePy:@cluster0.7o03egb.mongodb.net/",tlsAllowInvalidCertificates=True)
                      
 
 db = client['youtubepy']
