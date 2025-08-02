@@ -69,10 +69,11 @@ if __name__ == "__main__":
 
 
 
-# from pymongo import MongoClient
+
+# from pymongo import MongoClient  
 # from bson import ObjectId
 
-# client = MongoClient("mongodb+srv://youtubePy:pyyoutube143@cluster0.7o03egb.mongodb.net/",tlsAllowInvalidCertificates=True)
+# client = MongoClient("mongodb+srv://youtubePy:pawword@cluster0.7o03egb.mongodb.net/",tlsAllowInvalidCertificates=True)
 # # Not a good idea to include id and password in code files
 # #  tlsAllowInvalidCertificates=True - Not a good way to handle ssl
 
